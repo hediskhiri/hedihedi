@@ -1,0 +1,70 @@
+<div class="templatemo-content-container">
+    <div class="row mt-5">
+      <div class="col-md-6 offset-md-3">
+        <div class="card p-4">
+          <h1 class="text-center mb-3">Modifier un événement</h1>
+  
+          <!-- Utilisation de *ngIf pour s'assurer que evennement est défini -->
+          <div *ngIf="evennement">
+            <div class="form-group">
+              <input [(ngModel)]="evennement.nomevennement" type="text" class="form-control" placeholder="Nom">
+            </div>
+            <div class="form-group">
+              <input [(ngModel)]="evennement.discription" type="text" class="form-control" placeholder="Description">
+            </div>
+            <div class="form-group">
+              <input [(ngModel)]="evennement.date" type="datetime-local" class="form-control" placeholder="Date">
+            </div>
+            <div class="form-group">
+              <input [(ngModel)]="evennement.placeMax" type="number" class="form-control" placeholder="Places placeMax">
+            </div>
+              <!-- Bouton pour ouvrir la modal -->
+        <div class="form-group">
+            <button (click)="openMapPopup()" class="btn btn-primary btn-block">Sélectionner une localisation</button>
+          </div>
+            <div class="form-group">
+              <input [(ngModel)]="evennement.image" type="text" class="form-control" placeholder="Image">
+            </div>
+            <div class="form-group">
+              <input [(ngModel)]="evennement.etat" type="text" class="form-control" placeholder="État">
+            </div>
+            <div class="form-group">
+              <select [(ngModel)]="evennement.type" class="form-control">
+                <option value="">Sélectionner</option>
+                <option value="aa">aa</option>
+                <option value="bb">bb</option>
+                <option value="cc">cc</option>
+                <option value="dd">dd</option>
+                <option value="ee">ee</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button (click)="update()" class="btn btn-primary btn-block">Modifier</button>
+            </div>
+          </div>
+  
+          <!-- Popup pour la carte -->
+          <div class="modal" [class.show]="showMapPopup" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Sélectionner une localisation</h5>
+                  <button type="button" class="close" (click)="closeMapPopup()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <app-map (positionSelected)="onPositionSelected($event)"></app-map>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" (click)="closeMapPopup()">Fermer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  

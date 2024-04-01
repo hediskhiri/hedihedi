@@ -1,0 +1,6 @@
+/* Réduire légèrement la taille de la carte */
+.mgl-map-container {
+    width: 100%;
+    height: 300px; /* Réduisez cette valeur selon vos besoins */
+  }
+  

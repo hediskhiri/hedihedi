@@ -1,0 +1,11 @@
+
+.modal-body app-map {
+    border: 2px solid #ccc; /* Ajoute une bordure de 2px solide avec la couleur #ccc */
+    border-radius: 5px; /* Ajoute un arrondi aux coins de la carte */
+    width: 100%; /* Force la carte à remplir la largeur de la modal */
+    height: 300px; /* Définissez la hauteur de la carte selon vos préférences */
+}
+  .modal.show {
+    display: block;
+  }
+  

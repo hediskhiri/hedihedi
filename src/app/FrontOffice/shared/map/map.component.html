@@ -1,0 +1,11 @@
+<mgl-map
+  [style]="mapStyle"
+  [zoom]="zoomLevel"
+  [center]="mapCenter"
+  (mapClick)="onMapClick($event)"
+>
+<mgl-control mglNavigation position="top-left"></mgl-control>
+<mgl-marker *ngFor="let marker of markers" [lngLat]="marker.lngLat">
+  <div class="marker"></div>
+</mgl-marker>
+</mgl-map>

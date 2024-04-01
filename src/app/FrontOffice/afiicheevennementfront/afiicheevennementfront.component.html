@@ -1,0 +1,33 @@
+<div class="templatemo-content-container">
+    <div class="row">
+      <div *ngFor="let item of getPaginatedEvents()" class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img [src]="item.image" class="card-img-top" alt="Event Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.nomevennement }}</h5>
+            <p class="card-text">Date: {{ item.date| date: 'dd/MM/yyyy' }}</p>
+            <p class="card-text"> nombre de place disponible :   {{  item.placeMax  }}  </p>  
+            <p class="card-text">localisation : {{ item.placeName }}</p>
+          </div>
+         
+          <div class="card-footer">
+            <button [routerLink]="'/event/' + item.id" class="btn btn-info">Read more</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pagination -->
+    <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <button class="page-link" (click)="prevPage()">Previous</button>
+        </li>
+        <li class="page-item">
+          <button class="page-link" disabled>{{ currentPage }}</button>
+        </li>
+        <li class="page-item" [class.disabled]="getPaginatedEvents().length < itemsPerPage">
+          <button class="page-link" (click)="nextPage()">Next</button>
+        </li>
+      </ul>
+    </nav>
+  </div>

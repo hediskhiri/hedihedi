@@ -1,0 +1,17 @@
+<div>
+    <h3>Comments:</h3>
+    <ul class="comments-list">
+        <li *ngFor="let comment of comments">
+          <div class="comment">
+           
+            <!-- <span class="author">{{ comment.author }}</span> 
+            waiting for user implementation
+            -->
+             
+            <span class="timestamp">{{ comment.Date | date }}</span>
+            <p>{{ comment.contenu }}</p>
+          </div>
+        </li>
+      </ul>
+      <app-ajouter-commentaire></app-ajouter-commentaire>
+</div>

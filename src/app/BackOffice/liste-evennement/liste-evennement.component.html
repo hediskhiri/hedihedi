@@ -1,0 +1,47 @@
+<div class="templatemo-content-container">
+    <button class="btn btn-success mb-3" routerLink="/admin/ajouterevennement">Ajouter événement</button>
+    <div class="mb-3">
+        <label for="searchInput" class="form-label">Recherche :</label>
+        <input type="text" class="form-control" id="searchInput" [(ngModel)]="searchTerm" placeholder="Recherche">
+      </div>
+      
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-lg"> <!-- Ajout de la classe table-lg pour augmenter la taille du tableau -->
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th>Heure de début</th>
+                            <th>Nom de la place</th>
+                            <th>placedisponible</th>
+                            <th>Image</th>
+                            <th>État</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of filterEvents()">
+                            <td>{{ item.nomevennement }}</td>
+                            <td>{{ item.discription }}</td>
+                            <td>{{ item.date | date: 'dd/MM/yyyy' }}</td>
+                            <td>{{ item.date | date: 'HH:mm' }}</td>       
+                            <td>{{ item.placeName }}</td>
+                            <td>{{ item.placeMax }}</td>
+                            <td><img [src]="item.image" class="card-img-top" alt="Image" style="max-width: 100px; max-height: 100px;"></td>
+                            <td>{{ item.etat }}</td>
+                            <td>{{ item.type }}</td>
+                            <td>
+                                <button [routerLink]="'/admin/modifierevennement/' + item.id" class="btn btn-info">Modifier</button>
+                                <button (click)="delete(item.id)" class="btn btn-danger">Supprimer</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
