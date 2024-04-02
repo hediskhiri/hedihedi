@@ -20,76 +20,73 @@ import { AjouterevennementComponent } from './BackOffice/ajouterevennement/ajout
 
 const routes: Routes = [
   {
-    path:"forbiden",
-    component:ForbiddenComponent
-  },
- { path:"",
-  component:AllTempleteFrontComponent,
-  children:[
-    {
-      path: 'afficherevennementfront',
-      component: AfiicheevennementfrontComponent,
-    },
-    {
-      path: 'map',
-      component: MapComponent,
-    },
-    { path: 'calendar', component: calendarComponent },
-
-    { path: 'event/:id', component: EventDetailsComponent
-   },
-
-    { path: 'ajoutercommentaire', component: AjouterCommentaireComponent },
-    {
-      path:"login",
-      component:LoginComponent
-    },
-    {
-      path:"register",
-      component:RegisterComponent
-    },
-  ]
- },
-
-{
-  path:"admin",
-  component:AllTemplateBackComponent , canActivate:[AuthGuard],data:{roles:['ADMIN']}
-
-},
-
-{
-path:"user",
-component:UserComponent , canActivate:[AuthGuard],data:{roles:['USER']}
-},
-{
-  path:"stats",
-  component:StatsComponent 
+    path: 'forbiden',
+    component: ForbiddenComponent,
   },
   {
-    path: 'listeEvennement',
-    component: ListeEvennementComponent,
-  },
-  {
-    path: 'ajouterevennement',
-    component: AjouterevennementComponent,
-  },
-  {
-    path: 'stats',
-    component: StatsComponent,
-  },
-  {
-    path: 'modifierevennement/:id',
-    component: ModifierevennementComponent,
-  },
-  {
-    path: 'calendar',
-    component: calendarComponent,
-  },
-  {
-    path: 'ajoutercommentaire',
-    component: AjouterCommentaireComponent,
+    path: '',
+    component: AllTempleteFrontComponent,
+    children: [
+      {
+        path: 'user',
+        component: UserComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['USER'] },
+      },
+      {
+        path: 'ajoutercommentaire',
+        component: AjouterCommentaireComponent,
+      },
+      {
+        path: 'afficherevennementfront',
+        component: AfiicheevennementfrontComponent,
+      },
+      {
+        path: 'map',
+        component: MapComponent,
+      },
+      { path: 'calendar', component: calendarComponent },
+
+      { path: 'event/:id', component: EventDetailsComponent },
+
+      { path: 'ajoutercommentaire', component: AjouterCommentaireComponent },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
+    ],
   },
 
+  {
+    path: 'admin',
+    component: AllTemplateBackComponent, // canActivate:[AuthGuard],data:{roles:['ADMIN']},
+    children: [
+      {
+        path: 'listeEvennement',
+        component: ListeEvennementComponent,
+      },
+      {
+        path: 'ajouterevennement',
+        component: AjouterevennementComponent,
+      },
+      {
+        path: 'stats',
+        component: StatsComponent,
+      },
+      {
+        path: 'modifierevennement/:id',
+        component: ModifierevennementComponent,
+      },
+      {
+        path: 'calendar',
+        component: calendarComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
